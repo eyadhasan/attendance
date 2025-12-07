@@ -1,0 +1,13 @@
+{
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+  "reportAttributeAccessIssue": false,
+  "reportGeneralTypeIssues": false,
+  "reportOptionalMemberAccess": false,
+  "typeCheckingMode": "basic",
+  "exclude": [
+    "**/node_modules",
+    "**/__pycache__"
+  ]
+}
+
