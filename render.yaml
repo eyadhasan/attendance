@@ -1,0 +1,34 @@
+services:
+  - type: web
+    name: attendance-api
+    env: docker
+    plan: free
+    envVars:
+      - key: PORT
+        value: 8000
+      - key: POSTGRES_SERVER
+        fromDatabase:
+          name: attendance-db
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: attendance-db
+          property: port
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: attendance-db
+          property: database
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: attendance-db
+          property: user
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: attendance-db
+          property: password
+
+databases:
+  - name: attendance-db
+    databaseName: attendance
+    user: attendance_user
+    plan: free
