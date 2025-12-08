@@ -27,6 +27,17 @@ app = FastAPI(
 
 app.include_router(router)
 
+# Entry point for Railway deployment
+if __name__ == "__main__":
+    # Read PORT from environment variable, default 8000 for local testing
+    port = int(os.getenv("PORT", 8000))
+    # Run Uvicorn server
+    import uvicorn
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
+@app.get("/", include_in_schema=False)
+def health_check():
+    return {"status": "ok", "message": "Service is running"}
+
 #scalar api documentation
 @app.get("/scalar",include_in_schema=False)
 def get_scalar_docs():
